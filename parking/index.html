@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>IOT Car Park System</title>
+    
+    <style>
+      .item1 {
+        grid-area: header;
+      }
+      .item2 {
+        grid-area: menu;
+      }
+      .item3 {
+        grid-area: main;
+      }
+      .item4 {
+        grid-area: right;
+      }
+      .item5 {
+        grid-area: footer;
+      }
+
+      .grid-container {
+        display: grid;
+        grid-template-areas:
+          'header header header header header header header header header header header'
+          'menu main main main main main main main main main main'
+          'menu main main main main main main main main main main';
+        grid-gap: 10px;
+        background-color: lightblue;
+        padding: 10px;
+        margin-left: 5vw;
+        margin-right: 5vw;
+      }
+
+      .grid-container > div {
+        background-color: rgba(255, 255, 255, 0.8);
+        text-align: center;
+        font-size: 18x;
+      }
+      .parking-grid-container {
+        display: grid;
+        grid-template-columns: auto auto auto auto;
+        margin-left: 3vw;
+        padding-top: 0px;
+        padding-bottom: 3vw;
+        padding-left: 3vw;
+      }
+      .parking-grid-item {
+        background-color: lightgreen;
+        border: 2px solid rgba(0, 0, 0, 0.8);
+        width: 6vw;
+        height: 8vw;
+        font-size: 3vw;
+        text-align: center;
+        padding-top: 3vw;
+      }
+      .lane {
+        height: 1vw;
+      }
+      .column {
+        float: left;
+        width: 10%;
+        padding: 5px;
+      }
+
+      /* Clearfix (clear floats) */
+      .row::after {
+        content: '';
+        clear: both;
+        display: table;
+      }
+      body {
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 24px;
+      }
+     
+      .button {
+        border: none;
+        color: white;
+        padding: 15px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        background-color: #008CBA;
+      }
+      .controlbutton, .statustext{
+        visibility: hidden;
+      }
+
+     
+    </style>
+  </head>
+  <body>
+    <div style="text-align: center"><h2>IOT Carpark System</h2></div>
+    
+    <div class="grid-container">
+      <div class="item1">
+        <div class="row">
+          <div class="column" id="light-status">
+            <img src="images/red.png" alt="" width="30vw" id="light-img"/>
+          </div>
+          <div class="column statustext" id="status-a">a</div>
+          <div class="column statustext" id="status-b">b</div>
+          <div class="column statustext" id="status-c">c</div>
+          <div class="column statustext" id="status-d">d</div>
+          <div class="column statustext" id="status-e">e</div>
+          <div class="column statustext" id="status-f">f</div>
+          <div class="column statustext" id="status-g">g</div>
+          <div class="column statustext" id="status-h">h</div>
+          <div class="column statustext" id="status-cmd">cal</div>
+          <div class="column statustext" id="status-sens">sens</div>
+        </div>
+      </div>
+      <div class="item2">
+        Admin Login<br />
+        <div style="margin-top: 10px" id="passworddiv">
+            Enter password:
+            <br><input type="password" id="passwordinput">
+        </div>
+        <br><button class="button" id="loginbutton" onclick="doLoginLogoff()">Login</button>
+        
+        <p><button class="button"  onclick="startTimer()">Start</button></p>
+        <p><button class="button"  onclick="stopTimer()">Stop</button></p>
+        <p><button class="button controlbutton" id="calbutton" onclick="calibrateOnOff()">Calibrate On</button></p>
+       
+      </div>
+      <div class="item3">
+        <div class="parking-grid-container" style="margin-top: 5vw">
+          <div class="parking-grid-item" id="a">A</div>
+          <div class="parking-grid-item" id="b">B</div>
+          <div class="parking-grid-item" id="c">C</div>
+          <div class="parking-grid-item" id="d">D</div>
+        </div>
+        <div class="lane"></div>
+        <div class="parking-grid-container">
+          <div class="parking-grid-item" id="e">E</div>
+          <div class="parking-grid-item" id="f">F</div>
+          <div class="parking-grid-item" id="g">G</div>
+          <div class="parking-grid-item" id="h">H</div>
+        </div>
+      </div>
+    </div>
+    <script src="jquery-3.4.0.min.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>
